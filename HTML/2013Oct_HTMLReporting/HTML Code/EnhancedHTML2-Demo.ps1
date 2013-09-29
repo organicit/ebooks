@@ -216,7 +216,7 @@ foreach ($computer in $computername) {
                     'PreContent'='<h2>&diams; Services to Check</h2>';
                     'EvenRowCssClass'='even';
                     'OddRowCssClass'='odd';
-                    'MakeHiddenSection'=$true;
+                    'MakeHiddenSection'=$false;
                     'TableCssClass'='grid'}
         $html_sv = Get-InfoBadService -ComputerName $computer |
                    ConvertTo-EnhancedHTMLFragment @params 
@@ -225,7 +225,7 @@ foreach ($computer in $computername) {
                     'PreContent'='<h2>&diams; NICs</h2>';
                     'EvenRowCssClass'='even';
                     'OddRowCssClass'='odd';
-                    'MakeHiddenSection'=$true;
+                    'MakeHiddenSection'=$false;
                     'TableCssClass'='grid'}
         $html_na = Get-InfoNIC -ComputerName $Computer |
                    ConvertTo-EnhancedHTMLFragment @params
@@ -235,8 +235,8 @@ foreach ($computer in $computername) {
                     'Title'="System Report for $computer";
                     'PreContent'="<h1>System Report for $computer</h1>";
                     'HTMLFragments'=@($html_os,$html_cs,$html_dr,$html_pr,$html_sv,$html_na);
-                    'jQueryDataTableUri'='C:\html\jquerydatatable.js';
-                    'jQueryUri'='C:\html\jquery.js'}
+                    'jQueryDataTableUri'='http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.min.js';
+                    'jQueryUri'='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js'} 
         ConvertTo-EnhancedHTML @params |
         Out-File -FilePath $filepath
 
